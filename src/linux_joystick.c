@@ -268,6 +268,8 @@ static int compareJoysticks(const void* fp, const void* sp)
 //
 GLFWbool _glfwInitJoysticksLinux(void)
 {
+    return GLFW_TRUE;
+#if 0
     const char* dirname = "/dev/input";
 
     _glfw.linjs.inotify = inotify_init1(IN_NONBLOCK | IN_CLOEXEC);
@@ -318,6 +320,7 @@ GLFWbool _glfwInitJoysticksLinux(void)
 
     qsort(_glfw.joysticks, count, sizeof(_GLFWjoystick), compareJoysticks);
     return GLFW_TRUE;
+#endif
 }
 
 // Close all opened joystick handles
@@ -430,4 +433,3 @@ int _glfwPlatformPollJoystick(_GLFWjoystick* js, int mode)
 void _glfwPlatformUpdateGamepadGUID(char* guid)
 {
 }
-
